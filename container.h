@@ -17,6 +17,7 @@ public:
 	void Edit(T,int);
 	container();
 	container(T);
+	~container();
 	void insertfront(T);
 	void insertend(T);
 	void insertpos(int pos,T);
@@ -460,6 +461,18 @@ void container<T>::display()
 		underline();
 		//
 		//	throw out_of_range("\n\t\t## Empty Container ## \n");
+	}
+}
+template<typename T>
+container<T>::~container()
+{
+	node<T>*p,*q=NULL;
+	p = head;
+	for (int i = 0; i < size; i++)
+	{
+		q = p;
+		p = p->next;
+		delete q;
 	}
 }
 #endif
